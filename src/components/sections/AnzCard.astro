@@ -1,0 +1,91 @@
+---
+import { Image } from "astro:assets";
+import Button from "../Button.astro"
+import HandHoldingAnzApp2 from "../../assets/hand-holding-anz-app2.png";
+import PuzzlePiece from "../icons/PuzzlePiece.astro";
+import MagnifyingGlass from "../icons/MagnifyingGlass.astro";
+import Hourglass from "../icons/Hourglass.astro";
+import ManWave from "../icons/ManWave.astro";
+import Stopwatch from "../icons/Stopwatch.astro";
+import Stars from "../icons/Stars.astro";
+import iPhone from "../icons/iPhone.astro";
+
+const pills = [
+  {
+    icon: PuzzlePiece,
+    title: "UX/UI Design",
+  },
+  {
+    icon: MagnifyingGlass,
+    title: "Market Research",
+  },
+  {
+    icon: Hourglass,
+    title: "12 Week Project",
+  },
+  {
+    icon: ManWave,
+    title: "User Research",
+  },
+  {
+    icon: Stopwatch,
+    title: "Usability Testing",
+  },
+  {
+    icon: Stars,
+    title: "Figma",
+  },
+  {
+    icon: iPhone,
+    title: "iOS",
+  }
+]
+---
+<section class="page-layout-constrained mt-r-48 mb-r-48">
+
+  <div class="anz-card relative h-full px-[10.13vw] pt-r-80  pb-[4.79vw] xl:pt-r-110 xl:h-[38.61vw]">
+    <div class="max-w-[550px]  lg:max-w-[493px] z-10 relative">
+       <h3 class="subtle-subtitle text-black-300 mb-r-28">Featured Project</h3>
+       <h2 class="title-l text-project-blue mb-r-28">ANZ GoMoney Redesign</h2>
+       <div class="flex gap-3 flex-wrap mb-r-64">
+        {pills?.map((pill)=>
+        <div class="flex gap-0.5 bg-white button-s p-[3.5px_12px_3.5px_8px] w-fit rounded-[32px] items-center text-black">
+          <pill.icon class="" />
+          <span>{pill.title}</span>
+        </div>
+        )}
+       </div>
+       
+       <div class="place-self-end w-fit" >
+        <Button 
+          text="view case study"
+          href="/my-work/anz-case-study"
+          class=""
+        />
+      </div>
+    </div>
+ 
+      <Image
+      src={HandHoldingAnzApp2}
+      alt="ANZ Card"
+      width={1100}
+      height={1024}
+      class="left-[43.51vw] bottom-0 absolute max-w-[38.19vw] max-h-[35.55vw] w-full h-full z-0"
+
+    />
+  
+  </div>
+</section>
+<style>
+  section{
+    margin-top:3.33vw;
+    margin-bottom:3.33vw;
+  
+   
+  }
+  section .anz-card{
+    background: linear-gradient(153deg, #E8F1F8 0%,#D3E1EF  100%);
+    
+    border-radius: 27px;
+  }
+</style>

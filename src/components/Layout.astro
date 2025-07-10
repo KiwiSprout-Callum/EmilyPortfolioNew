@@ -1,0 +1,16 @@
+---
+import Header from './sections/Header.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from './sections/Footer.astro';
+import CustomStyles from '../components/CustomStyles.astro';
+const { title, backgroundColor= "#EAE8E1"} = Astro.props;
+
+---
+<html lang="en">
+<BaseHead title={title} />
+<CustomStyles backgroundColor={backgroundColor} />
+<body>
+  <Header />
+    <slot />
+  <Footer />
+</body>

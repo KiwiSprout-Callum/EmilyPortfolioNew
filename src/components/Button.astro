@@ -1,0 +1,44 @@
+---
+import Arrow45Deg from "./icons/Arrow45Deg.astro";
+const {
+  text = "Click Me",
+  href = "#",
+  color = "#141414",
+  bg= "#E4FF35",
+  clickColor = "#CAE423"
+} = Astro.props;
+
+---
+<a 
+href={href}
+class={`btn rounded-[32px] button-ml leading-none flex gap-2.5 items-center ${Astro.props.class}`}
+>
+{text}
+<div class="icon"><Arrow45Deg /></div>
+</a>
+<style define:vars={{
+  clickColor,
+  color,
+  bg
+}}>
+.btn {
+  transition:all 0.3s ease;
+  cursor: pointer;
+  color: var(--color);
+  background: var(--bg);
+}
+.btn .icon{
+
+  transition:all 0.3s ease;
+}
+.btn:hover{
+  box-shadow: 0px 0px 17.4px 0.75px #FFFFFF inset, 0px 0px 25.3px 0.75px var(--bg) ;
+}
+.btn:hover .icon{
+  transform: rotate(45deg);
+}
+.btn:active{
+  background-color: var(--clickColor);
+  box-shadow:  0px 0px 17.4px 0.75px #FFFFFF inset;
+}
+</style>

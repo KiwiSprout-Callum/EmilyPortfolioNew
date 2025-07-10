@@ -1,0 +1,74 @@
+---
+
+const cvData = [
+  {
+    category: "Work Experience",
+    qualifications: [
+      {
+        title:"UX / UI / Product / Interdisciplinary Designer",
+        subtitle:"2024 - Current  |  Freelance",
+        content:"User Experience Design, User Interface Design, User Research, Usability Testing, Prototyping, Wireframing, Design Systems, Responsive Design, Interaction Design, Accessibility, Information Architecture, Motion Design , Design Systems"
+      },
+      {
+        title:"Visual Identity Designer",
+        subtitle:"2021 - 2023  |  Freelance",
+        content:"Visual Identity, Print Design, Digital Media, Branding, Typography, Marketing Materials, Cross-Channel Design, Social Media, Content Creation, Copywriting"
+      }
+    ]
+  },
+  {
+    category: "Education",
+    qualifications: [
+    {
+        title:"Google UX Design Professional Certificate",
+        subtitle:"2025",
+        content:""
+      },
+      {
+        title:"Master of Arts in Communication Design",
+        subtitle:"2020 - Falmouth University, Cornwall, UK",
+        content:`<p>
+          <span style="font-weight: 500;">Thesis</span> Disembodied Voices: Designing Voice AI between Tech and Humanity Conducted comprehensive research on the use, societal impact, and design principles of voice AI. Applied human-centered design methodologies to develop discursive design objects that provoke thought and discussion about ethical considerations such as privacy, inclusivity, and accessibility. Created and tested prototypes, gaining insights into emerging technologies and their integration into daily life.
+          </p>
+          <br>
+          <p><span style="font-weight: 500;">Key Skills</span> Research, Visual Design, Prototyping, Design Thinking, Design Psychology</p>`
+      },
+      
+    ]
+  }
+]
+---
+<section class="page-layout-constrained">
+  <div class="flex flex-col gap-r-69 p-r-48 rounded-[24px] bg-white">
+      {cvData?.map((x)=>{
+
+        return(
+        <div class="grid grid-cols-1 md:grid-cols-[17.6fr_73fr] justify-between  gap-r-69">
+           <h3 class="title-xs-regular text-black-700 ">{x.category}</h3>
+           <div class="flex flex-col gap-r-48">
+            {x?.qualifications?.map((y, i)=>{
+              return(
+                <div class="row  border-b-[1px] border-black-900">
+                  <h4 class="title-m-regular mb-r-24">{y.title}</h4>
+                  <p class="title-xs-regular text-black-500  mb-r-24">{y.subtitle}</p>
+                  <div class="xx body-large-light text-black-500 mb-r-48" set:html={y.content}></div>
+                </div>
+              )
+            })}
+           </div>
+      </div>
+        )
+
+      })}
+  </div>
+</section>
+<style>
+span{
+    font-weight: 900 !important;
+  }
+
+
+</style>
+<script>
+
+</script>

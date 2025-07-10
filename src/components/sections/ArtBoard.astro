@@ -1,0 +1,219 @@
+---
+import { Image } from "astro:assets";
+import TooltipWrapper from "../TooltipWrapper.astro";
+import eyeTest from "../../assets/eye-test.png";
+import stress from "../../assets/stress.png";
+import punch from "../../assets/punch.png";
+import lifeRing from "../../assets/life-ring.png";
+import personPhone from "../../assets/person-phone.png";
+import girlCoverEyes from "../../assets/girl-cover-eyes.png";
+import computerFrustration from "../../assets/computer-frustration.png";
+import eclipse from "../../assets/eclipse.png";
+import girlSmile from "../../assets/girl-smile.png"
+import grabBook from "../../assets/grab-book.png";
+import waterOverflow from "../../assets/water-overflow.png";
+import cardInfo from "../../assets/card-info.png";
+
+
+---
+<section class="overflow-hidden relative h-[58.47vw] grid-cols-2 hidden lg:grid page-layout-full-width">
+  <div class="subtitle-xxs-regular absolute-center">I love digging into the real problems our users face and engineering transformative solutions</div>
+  <div class="h-[29.235vw]">
+    <div class=" w-[50vw] ">
+      <TooltipWrapper   
+        class="rounded-lg absolute top-0 left-0 z-20"
+        message="“Eyes moved to top right immediately—habitual scan pattern.”"
+        relativeBottom="-1.38vw"
+        relativeLeft="7.36vw"
+        maxWidth="18.2vw"
+        >
+        <Image 
+          src={eyeTest}
+          alt="Eye Test"
+          width={600}
+          height={600}
+          class="rounded-lg w-[24.65vw] h-auto "
+        />
+      </TooltipWrapper>
+    
+      <TooltipWrapper   
+      class="rounded-lg w-[17.4vw] h-auto absolute top-[2.36vw] left-[28.95vw] z-10"
+      message="“Could we use haptic feedback to confirm critical actions?”"
+      relativeBottom="-0.97vw"
+      relativeLeft="-1.94vw"
+      maxWidth="11.04vw"
+      >
+      <Image 
+      src={punch}
+      alt="Eye Test"
+      width={500}
+      height={500}
+      class="rounded-lg"
+    
+    />
+    </TooltipWrapper>
+      
+
+      <Image 
+        src={stress}
+        alt="Eye Test"
+        width={1000}
+        height={1000}
+        class="rounded-lg w-[29.8vw] h-auto z-[-10] absolute top-[-6.73vw] left-[19.51vw] opacity-20 " 
+      />
+      
+     </div>
+     <div class="w-[50vw]">
+      <TooltipWrapper   
+      class="rounded-lg w-[17.43vw] h-auto absolute top-[2.36vw] left-[55.83vw]"
+      message="“If it’s not obvious how to undo, I won’t try it—I’m afraid of breaking something.”"
+      relativeBottom="-0.37vw"
+      relativeLeft="-3.82vw"
+      maxWidth="15.34vw"
+      >
+          <Image 
+            src={lifeRing}
+            alt="Life Ring"
+            width={500}
+            height={500}
+            class="rounded-lg"
+          />
+        </TooltipWrapper>
+        <TooltipWrapper   
+        class="rounded-lg w-[17.36vw] h-auto absolute top-[7.08vw] left-[80vw] z-10"
+        message="“In what situations would you reach for your phone instead of a computer?”"
+        relativeBottom="-1vw"
+        relativeLeft="-4.65vw"
+        maxWidth="13.33vw"
+        >
+          <Image 
+          src={personPhone}
+          alt="Person on Phone"
+          width={500}
+          height={500}
+          class="rounded-lg"
+        />
+      </TooltipWrapper>
+        <Image 
+        src={girlCoverEyes}
+        alt="Girl Cover Eyes"
+        width={1000}
+        height={1000}
+        class="rounded-lg w-[35.13vw] h-auto z-[-10] absolute top-[-5.9vw] left-[61.11vw] opacity-20 " 
+        />
+     </div>
+  </div>
+  <div class="h-[29.235vw]">
+    <div class="w-[50vw]">
+      <TooltipWrapper   
+      class="rounded-lg w-[17.36vw] h-auto absolute top-[29.23vw] left-[0] z-20"
+      message="“What frustrates you most when filling out an online form?”"
+      relativeBottom="8.56vw"
+      relativeLeft="11.04vw"
+      maxWidth="11.04vw"
+      >
+      <Image 
+        src={computerFrustration}
+        alt="Computer Frustration"
+        width={500}
+        height={500}
+        class="rounded-lg"
+      />
+
+
+    </TooltipWrapper>
+    <TooltipWrapper   
+    class="rounded-lg w-[22.15vw] h-auto absolute top-[39.3vw] left-[15.27vw] z-10"
+    message="“What if settings adapted based on time of day?”"
+    relativeBottom="5.9vw"
+    relativeLeft="-7.22vw"
+    maxWidth="12.91vw"
+    >
+    <Image 
+    src={eclipse}
+    alt="Eclipse"
+    width={600}
+    height={600}
+    class="rounded-lg"
+  />
+  </TooltipWrapper>
+
+  <TooltipWrapper   
+  class="rounded-lg w-[20.13vw] h-auto absolute top-[34.72vw] left-[39.93vw] z-10"
+  message="“How do you store or revisit information you find important?”"
+  relativeBottom="13.47vw"
+  relativeLeft="-1.31vw"
+  maxWidth="11.04vw"
+  >
+  <Image 
+  src={grabBook}
+  alt="Person Grabbing Book"
+  width={600}
+  height={600}
+  class="rounded-lg"
+  />
+</TooltipWrapper>
+
+    <Image 
+    src={waterOverflow}
+    alt="Glass of Water Overflowing"
+    width={1000}
+    height={1000}
+    class="rounded-lg w-[36.18vw] h-auto absolute top-[33.19vw] left-[7.15vw] opacity-20 " 
+    />
+    </div>
+    <div class="w-[50vw]">
+      <TooltipWrapper   
+      class="rounded-lg w-[17.36vw] h-auto absolute top-[37.91vw] left-[64.09vw] z-10"
+      message="“I gave up when it asked for my credit card again—I hate repeating steps.”"
+      relativeBottom="-0.9vw"
+      relativeLeft="-1.66vw"
+      maxWidth="12.63vw"
+      >
+      <Image 
+      src={cardInfo}
+      alt="Card info"
+      width={500}
+      height={500}
+      class="rounded-lg "
+    />
+    </TooltipWrapper>
+    <TooltipWrapper   
+    class="rounded-lg w-[17.36vw] h-auto absolute top-[27.84vw] left-[83.95vw] z-10"
+    message="“Smiled when seeing the success icon.”"
+    relativeBottom="2.15vw"
+    relativeLeft="-1.18vw"
+    maxWidth="11.04vw"
+    >
+    <Image 
+    src={girlSmile}
+    alt="Person Smiling"
+    width={500}
+    height={500}
+    class="rounded-lg"
+  />
+</TooltipWrapper>
+ 
+    <Image 
+    src={stress}
+    alt="Stress"
+    width={1400}
+    height={1400}
+    class="rounded-lg w-[50.27vw] h-auto z-[-10] absolute top-[33.19vw] left-[47.08vw] opacity-20 " 
+    />
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .absolute-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 874px;
+    z-index: 100;
+  }
+</style>

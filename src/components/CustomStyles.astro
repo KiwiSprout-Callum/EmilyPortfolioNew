@@ -1,0 +1,44 @@
+---
+
+import '@fontsource-variable/hanken-grotesk';
+const { backgroundColor } = Astro.props;
+
+---
+
+<style define:vars={{ backgroundColor, }}  is:global>
+:root{
+  --fontFamily: 'Hanken Grotesk Variable', sans-serif;
+  --textColor:#3C3C3C;
+  --backgroundColor:#EAE8E1;
+  --container-max-width:1440;
+}
+
+html {
+  font-size: 16px; 
+}
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 14px; 
+  }
+}
+
+@media (max-width: 880px) {
+  html {
+    font-size: 12px; 
+  }
+}
+
+@media (max-width: 660px) {
+  html {
+    font-size: 10px; 
+  }
+}
+
+.btn {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: fit-content;
+}
+
+</style>

@@ -1,0 +1,60 @@
+---
+const { message="this is a tooltip", relativeBottom=0, relativeLeft=0, maxWidth="200px" } = Astro.props;
+---
+
+<div class=`${Astro.props.class}`>
+  <!-- Tooltip Container -->
+<div class="tooltip-container">
+  <!-- Trigger Element -->
+ <slot />
+  <!-- Tooltip Content -->
+  <div class="tooltip tooltip-text" style={`left:${relativeLeft}; bottom:${relativeBottom}; max-width:${maxWidth}`}>{message}</div>
+</div>
+</div>
+
+<style>
+  /* Base Tooltip Styles */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-trigger {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.tooltip {
+  /* Positioning */
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  box-sizing: border-box;
+
+  
+  /* Styling */
+  background: white;
+
+  padding:10px;
+  border-radius: 0.375rem;
+  
+
+  
+  /* Arrow */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+
+
+/* Show tooltip on hover */
+.tooltip-container:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+</style>

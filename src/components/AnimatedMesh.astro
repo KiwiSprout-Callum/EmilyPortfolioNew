@@ -1,0 +1,77 @@
+<div class="animated-mesh ">
+  <div class="mesh-bg">
+    <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" class="mesh-svg">
+      <circle cx="200" cy="200" r="260" fill="#EAC5B9" filter="url(#blur)" class="blob blob1" />
+      <circle cx="800" cy="300" r="240" fill="#F8E5F7" filter="url(#blur)" class="blob blob2" />
+      <circle cx="500" cy="800" r="290" fill="#F6E2F4" filter="url(#blur)" class="blob blob3" />
+    </svg>
+  </div>
+</div>
+
+<style>
+
+  .animated-mesh {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 24px;
+  }
+ 
+  .mesh-bg {
+  background: #80D8F4;
+  width: 100%;
+  height:100%;
+  position: relative;
+  overflow: hidden;
+  
+}
+
+.mesh-svg {
+  /* width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%; */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  opacity: 1;
+  /* Removed global blur */
+}
+
+.blob {
+  opacity: 1;
+  transform-origin: center;
+  filter: blur(90px)
+}
+
+.blob1 { animation: blobMove1 12s ease-in-out infinite; }
+.blob2 { animation: blobMove2 15s ease-in-out infinite; }
+.blob3 { animation: blobMove3 13s ease-in-out infinite; }
+
+@keyframes blobMove1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(120px, -80px) scale(1.2); }
+  50%  { transform: translate(160px, 80px) scale(0.9); }
+  75%  { transform: translate(80px, 160px) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes blobMove2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(-130px, 60px) scale(1); }
+  50%  { transform: translate(-160px, -140px) scale(1.1); }
+  75%  { transform: translate(-90px, -100px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes blobMove3 {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(90px, 160px) scale(1.1); }
+  50%  { transform: translate(60px, -100px) scale(1); }
+  75%  { transform: translate(-100px, -40px) scale(1.2); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Optional noise overlay */
+
+
+</style>

@@ -1,0 +1,113 @@
+---
+import Hamilton from "../../assets/hamilton.png";
+import Pottery from "../../assets/pottery.png";
+import Powerlift from "../../assets/powerlift.png";
+import Building from "../../assets/building.png";
+import { Image } from "astro:assets";
+---
+<section class="page-layout-constrained ">
+<div class="pt-r-45 pb-r-45 pl-r-35 pr-r-35">
+  <div class="text title-m-regular text-black-500 flex flex-col gap-r-40">
+    <p>I have a Master’s degree in <span id="communication-design" class="text-black">Communication Design</span> and am currently living and working out of <span id="hamilton" class="text-black">Hamilton, New Zealand.</span></p>
+    <p>Outside design, I’m a keen <span id="pottery" class="text-black">potter</span> and <span id="powerlift" class="text-black">amateur powerlifter</span>, 
+      and I love working with wood and <span id="building" class="text-black">building</span> things with my hands .</p>
+  </div>
+  <div class="images mt-r-72 h-r-309 relative ">
+    <!-- Communication design placeholder -->
+      <div 
+      id="communication-design"
+      class="w-r-370 h-r-247 rounded-[12px] absolute left-r-0 bottom-r-0 hide-image">
+        <Image 
+          src={Hamilton}
+          alt="Hamilton City view over river"
+          class="w-full h-full object-cover"
+          width={1000}
+          height={1000}
+        />
+      </div>
+      <div
+      id="hamilton"
+      class="w-r-370 h-r-247 rounded-[12px] absolute left-r-210 bottom-r-48 hide-image">
+        <Image 
+          src={Hamilton}
+          alt="Hamilton City view over river"
+          class="w-full h-full object-cover"
+          width={1000}
+          height={1000}
+        />
+      </div>
+      <div
+      id="pottery"
+       class="w-r-370 h-r-247 rounded-[12px] absolute left-r-470 bottom-r-77 hide-image">
+        <Image 
+          src={Pottery}
+          alt="Pottery, throwing a pot on a wheel"
+          class="w-full h-full object-cover"
+          width={1000}
+          height={1000}
+        />
+      </div>
+      <div 
+      id="powerlift"
+      class="w-r-370 h-r-247 rounded-[12px] absolute left-r-729 bottom-r-125 hide-image">
+        <Image 
+          src={Powerlift}
+          alt="Powerlifting, person squatting a barbell"
+          class="w-full h-full object-cover"
+          width={1000}
+          height={1000}
+        />
+        </div>
+        <div
+        id="building"
+         class="w-r-370 h-r-247 rounded-[12px] absolute left-r-976 bottom-r-155 hide-image">
+          <Image 
+            src={Building}
+            alt="Building, cutting wood with handsaw"
+            class="w-full h-full object-cover"
+            width={1000}
+            height={1000}
+          />
+        </div>
+
+  </div>
+</div>
+</section>
+<style>
+   section .images div{
+    transition: all 0.6s ease;
+
+   }
+  section .images div.hide-image {
+    opacity: 0;
+  }
+  section .images div.show-image {
+    opacity: 1;
+  }
+
+</style>
+<script>
+  //get all span text elements on hover find matching id and add show-image class
+  const spans = document.querySelectorAll("span");
+  spans.forEach(span => {
+    console.log(span.id);
+    span.addEventListener("mouseover", () => {
+      const id = span.id;
+      const image = document.querySelector(`.images #${id}`);
+      console.log(image);
+      if (image) {
+        image.classList.add("show-image");
+        image.classList.remove("hide-image");
+      }
+    });
+    span.addEventListener("mouseout", () => {
+      const id = span.id;
+      const image = document.querySelector(`.images #${id}`);
+      if (image) {
+        image.classList.remove("show-image");
+        image.classList.add("hide-image");
+      }
+    });
+  });
+
+</script>
