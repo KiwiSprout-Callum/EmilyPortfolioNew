@@ -1,0 +1,58 @@
+---
+const pastWorks = [
+  {
+    title:"SaaS Tech Development Website",
+    workInvolvedList: [ "Web Design", "Brand Identity", "Copywriting", "Tech" ],
+    bgMain:"#96C7B6",
+    bgSecondary:"#C6DCEB",
+    textColor:"#0D3272",
+    imageDesktop:"",
+    imageMobile:"",
+  },
+  {
+    title:"Mindful Art Kits Website",
+    workInvolvedList: [ "Web Design", "Ecommerce", "Copywriting", "Wellness" ],
+    bgMain:"#D39F7B",
+    bgSecondary:"#DAC4E8",
+    textColor:"#4E335B",
+    imageDesktop:"",
+    imageMobile:"",
+  }
+]
+---
+<section class="page-layout-constrained">
+  <ul id="cards" class="" style={`--numcards:${pastWorks.length}`}>
+    {pastWorks?.map((work,index)=>{
+
+        return   ( <li class="card" id={`card_${index+1}`}>
+                      <div
+                        class={`card__content h-full flex flex-col`}
+                      
+                      >
+                          <div class="p-8 pb-0  rounded-xl z-20"
+                              style={`background-color: ${work?.bgMain}; color: ${work?.textColor};`}
+                          >
+                            <div class="aspect-[526/485] h-full w-full bg-red-700 ">
+                            
+                          </div>
+                          </div>
+                          <div
+                              class="rounded-b-xl p-3 pt-5 -mt-2 z-10 title-xs"
+                             style={`background-color: ${work?.bgSecondary};`}
+                              >
+                            {work?.title}
+                            <ul class="mt-4 columns-2">
+                              {work?.workInvolvedList?.map((item) => {
+                                return <li class="title-xs">{item}</li>
+                              })}
+                            </ul>
+                          </div>
+                      </div>
+                    </li>)
+    })}
+ 
+ 
+ 
+
+  </ul>
+</section>

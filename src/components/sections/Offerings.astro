@@ -1,0 +1,67 @@
+---
+import Strategy from '../icons/Strategy.astro';
+import Desktop from '../icons/Desktop.astro';
+import Design from '../icons/Design.astro';
+import UX from '../icons/UX.astro';
+
+const offerings =[
+  {
+    title:"Strategy",
+    list:[
+      "Brand Strategy",
+      "Brand Audit",
+      "Marketing Roadmap",
+    ],
+    icon: Strategy,
+  },
+  {
+    title:"Websites",
+    list:[
+      "Website Audit",
+      "Website Design",
+      "Rocketspark Websites",
+      "Squarespace Websites",
+    ],
+    icon: Desktop,
+  },
+  {
+    title:"Creative",
+    list:[
+      "Brand Identity",
+      "Graphic Design",
+      "Photography and Video",
+      "Copywriting",
+    ],
+    icon: Design,
+  },
+  {
+    title:"UX",
+    list:[
+      "UX Audit",
+      "UX Research",
+      "Usability Testing",
+      "UX Design",
+    ],
+    icon: UX,
+  },
+]
+---
+<section class="page-layout-constrained flex flex-col gap-3">
+  {
+    offerings?.map((offering)=>{
+      return (
+        <div class="flex flex-col  gap-4 items-start p-8 bg-white rounded-xl">
+          <offering.icon class="w-8 h-8 text-black-900" />
+          <div class="flex flex-col gap-2">
+            <h3 class="title-xs ">{offering.title}</h3>
+            <ul class="">
+              {offering.list.map((item) => (
+                <li class="body-small-alt">{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )
+    })
+  }
+</section>

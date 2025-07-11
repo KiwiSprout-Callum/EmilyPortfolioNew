@@ -5,15 +5,13 @@ const {
   href = "#",
   color = "#141414",
   bg= "#E4FF35",
-  clickColor = "#CAE423",
-  isFullWidth = false
+  clickColor = "#CAE423"
 } = Astro.props;
 
-const isFullWidthClass = isFullWidth ? "100%" : "fit-content";
 ---
 <a 
 href={href}
-class={`btn rounded-[32px]  btn-text  leading-none w-full flex gap-2.5 items-center ${Astro.props.class}`}
+class={`btn rounded-[32px] button-ml leading-none flex gap-2.5 items-center ${Astro.props.class}`}
 >
 {text}
 <div class="icon"><Arrow45Deg /></div>
@@ -21,15 +19,13 @@ class={`btn rounded-[32px]  btn-text  leading-none w-full flex gap-2.5 items-cen
 <style define:vars={{
   clickColor,
   color,
-  bg,
-  isFullWidthClass
+  bg
 }}>
 .btn {
   transition:all 0.3s ease;
   cursor: pointer;
   color: var(--color);
   background: var(--bg);
-  width: var(--isFullWidthClass);
 }
 .btn .icon{
 

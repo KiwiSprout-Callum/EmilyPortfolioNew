@@ -22,33 +22,30 @@ const socials = [{
 }]
 ---
 <footer  class="bg-black page-layout-constrained body-small-light">
- <div class="pt-r-24 pb-r-24 pl-r-24 pr-r-24 flex justify-between">
+  <!-- mobile -->
+ <div class="py-6 pl-r-24 pr-r-24 flex flex-col gap-6 justify-between md:hidden">
 
-  <div class="flex gap-r-32 items-center">
-    <a href="#">
-      <ELogoLight />
-    </a>
-    <span>Emily Eaton Copyright © 2025</span>
+  <div class="flex items-center justify-between">
+    <div class="flex gap-r-32 items-center">
+      <a href="#">
+        <ELogoLight />
+      </a>
+      <span>Emily Eaton <br class="block md:hidden"> Copyright © 2025</span>
+    </div>
+  
+    <div class="flex gap-r-48 items-center">
+      <a
+        href="mailto:e.eaton@outlook.com"
+        class="flex items-center gap-r-5"
+      >
+        <EmailOutline />
+        e.eaton@outlook.com
+      </a>
+  
+    </div>
   </div>
 
-  <div class="flex gap-r-48 items-center">
-    <a
-      href="mailto:e.eaton@outlook.com"
-      class="flex gap-r-5"
-    >
-      <EmailOutline />
-      e.eaton@outlook.com
-    </a>
-    <a
-      href="tel:+642108759233"
-      class="flex gap-r-5"
-    >
-      <PhoneOutline />
-      +64 21087 59233
-    </a>
-  </div>
-
-  <div class="flex gap-r-66 items-center">
+  <div class="flex justify-between w-full items-center">
     {socials?.map((social)=>
       <a
       href={social.href}>
@@ -58,6 +55,39 @@ const socials = [{
 
   </div>
 
+ </div>
+ <!-- desktop -->
+ <div class="pt-r-24 pb-r-24 pl-r-24 pr-r-24 md:flex justify-between hidden flex-row ">
+
+
+    <div class="flex gap-r-32 items-center">
+      <a href="#">
+        <ELogoLight />
+      </a>
+      <span>Emily Eaton <br class="block md:hidden"> Copyright © 2025</span>
+    </div>
+  
+
+  
+  <div class="flex gap-r-66 items-center">
+    {socials?.map((social)=>
+      <a
+      href={social.href}>
+        <social.icon />
+      </a>
+    )}
+
+  </div>
+  <div class="flex gap-r-48 items-center">
+    <a
+      href="mailto:e.eaton@outlook.com"
+      class="flex items-center gap-r-5"
+    >
+      <EmailOutline />
+      e.eaton@outlook.com
+    </a>
+
+  </div>
  </div>
 </footer>
 <style>

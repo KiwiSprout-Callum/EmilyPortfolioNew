@@ -1,22 +1,32 @@
 ---
 import  ELogoBlack  from "../icons/ELogoBlack.astro"
 import MailBlack from '../icons/MailBlack.astro';
-const navLinks = [{
+import Hamurger from "../icons/Hamurger.astro";
+import MobileFlyoutMenu from "../MobileFlyoutMenu.astro";
+const navLinks = [
+  {
   label: 'Work',
-  href: '/work'
-}, {
+  href: '/#work'
+}, 
+{
+  label: 'Services',
+  href: '/#services'
+}, 
+{
   label: 'About',
-  href: '/about'
-}, {
-  label: 'Freelance',
-  href: '/freelance'
+  href: '/#about'
+}, 
+{
+  label: 'FAQ',
+  href: '/#faq'
 }]
 ---
-
-<nav class=" page-layout-constrained">
-  <div class="nav-container flex justify-between items-center">
+<header>
+  
+<nav class="px-8 py-[28px] md:page-layout-constrained">
+  <div class="flex justify-between items-center">
     <a href="/"><ELogoBlack class="h-6 w-6" /></a>
-    <ul class="flex gap-4 h-8 items-center">
+    <ul class=" gap-4 h-8 items-center hidden md:flex">
       {navLinks?.map(({
         label,
         href
@@ -25,23 +35,18 @@ const navLinks = [{
       })}
       
     </ul>
-    <a href="/contact"><MailBlack class="h-6 w-6" /></a>
+    <a href="/contact" class=" hidden md:flex"><MailBlack class="h-6 w-6" /></a>
+    <!-- <button class="flex md:hidden">
+      <Hamurger class="h-6 w-6" />
+    </button> -->
+    <MobileFlyoutMenu navLinks={navLinks} />
+  
   </div>
 </nav>
+</header>
 <style>
   
-nav{
-  margin-top:21px;
-  margin-bottom:21px;
-}
-.nav-container {
-  padding: 24px 32px;
 
-}
-li {
-  
-    padding:6px 8px;
-  }
   a:hover{
     opacity: 0.8;
     cursor: pointer;

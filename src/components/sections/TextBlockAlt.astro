@@ -1,0 +1,44 @@
+---
+import ColourBlurEffect from '../ColourBlurEffect.astro';
+import UX from '../icons/UX.astro';
+  const cardList = [
+    {text:"Maybe your website isn’t converting like it should.", icon: UX},
+    {text:"Maybe people are taking one look at your site, and leaving.", icon: UX},
+    {text:"Maybe your offer’s solid, but customers are still left confused.", icon: UX},
+    {text:"Maybe your brand feels a step behind the business you've actually built.", icon: UX},
+  ]
+---
+<section class="page-layout-constrained ">
+ <div class="relative ">
+  <div class="-left-[100px] top-1/2 absolute">
+    <ColourBlurEffect 
+    color="#7214FF"
+  />
+  <div class="-left-[50px] top-2/3 absolute">
+    <ColourBlurEffect 
+    color="#32CAFD"
+  />
+  </div>
+  </div>
+  <div class="body">
+    <h2 class="title-m">Your website could be losing you business</h2>
+    <p>You’ve built a business you believe in. You know your product or service brings real value.</p>
+    <p>But your digital presence? It’s not telling that story clearly enough.</p>
+
+    <ul class="bg-white px-10 py-7 rounded-xl">
+      {cardList?.map((item)=>{
+        return (
+          <li class="flex items-start gap-4 mb-6">
+            <item.icon class="w-8 h-8 text-black-900" />
+            <p class="body-small-alt">{item.text}</p>
+          </li>
+        )
+      })}
+    </ul>
+
+    <h3 class="title-s">Sound Familiar?</h3>
+    <p>You’re not alone. These are the kinds of problems I help solve every day.</p>
+    <p>I work with businesses, startups and solo founders to create websites and digital experiences that feel clear, confident, and built to grow. Whether you need to communicate your value, build trust fast, or turn casual visitors into loyal customers—we’ll get you there.</p>
+  </div>
+ </div>
+</section>

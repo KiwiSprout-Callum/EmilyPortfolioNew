@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import EmilyImg from '../../assets/emily-img.png';
+import WarmDesk from '../../assets/warm-desk.png';
+---
+<section class="page-layout-constrained">
+  <div class="relative rounded-lg overflow-hidden aspect-[369/454] md:aspect-[1365/560] ">
+    <Image
+    src={WarmDesk}
+    alt="Emily sitting at a desk with a warm cup of coffee"
+    class="h-full w-full  object-cover "
+    width={1365}
+    height={560}
+    />
+     <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
+    <!-- mobile -->
+    <div class="grid grid-cols-[80px_1fr] items-center justify-between gap-4 md:hidden absolute bottom-6 left-6 z-20">
+      
+
+        <div class="rounded-[50%] overflow-hidden w-20 h-20">
+          <Image
+            src={EmilyImg}
+            alt="Emily Eaton"
+            class="w-full h-full object-cover "
+            width={80}
+            height={80}
+          />
+        </div>
+        <div class="text-white ">
+          <h2 class="body-small-alt font-semibold mb-2">Emily Eaton</h2>
+          <h3 class="body-small-alt ">An independent designer based in Aotearoa New Zealand📍</h3>
+        </div>
+    </div>
+  </div>
+</section>

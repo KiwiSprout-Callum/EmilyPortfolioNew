@@ -1,21 +1,27 @@
 ---
 import AnimatedMesh from "../AnimatedMesh.astro";
+import Button from "../Button.astro";
 ---
-<div class="page-layout-constrained  mt-r-21  mb-r-32">
-  <section class="relative h-[65vw] lg:h-[calc(100vh-122px-2.6vh)]" >
-    <AnimatedMesh />
-    <div class="absolute left-[5vw] bottom-[5vw] pr-[5vw] md:bottom-[10vw] md:left-[10vw] md:pr-0">
-      <h1 class="title-xxs-medium">
-        <strong>
-          Hi, I’m Emily — <br/>
-          User-Centred Product Designer
-        </strong>
-      </h1>
-      <span class="subtitle-xxs-regular">
-        Designing experiences grounded in empathy and guided by data <br/>
-        Based in beautiful Aotearoa New Zealand📍
-      </span>
+
+ <section class= "page-layout-constrained">
+  <div class="bg-gradient-to-b from-champagne to-white rounded-xl pt-[72px]  pb-8">
+    <div class="flex flex-col items-center mx-auto max-w-[313px]">
+      <h2 class="title-l mb-3">
+        Simple,<br> smart design for ambitious businesses
+      </h2>
+      <h3 class="subtitle-l mb-8">
+        Crafting websites that feel like you. Clear, confident, and built to convert.
+      </h3>
+      <Button 
+        text="Book your free website audit"
+        isFullWidth={true}
+      />
+      <p class="mt-3 body-small-alt">
+        30 minute no-obligation consultation
+      </p>
     </div>
-  </section>
-</div>
+     
+  </div>
+ </section>
+
 

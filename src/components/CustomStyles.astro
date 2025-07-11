@@ -1,44 +1,31 @@
 ---
 
-import '@fontsource-variable/hanken-grotesk';
+// Supports weights 100-900
+import '@fontsource-variable/inter';
+import '@fontsource-variable/eb-garamond';
 const { backgroundColor } = Astro.props;
 
 ---
 
 <style define:vars={{ backgroundColor, }}  is:global>
 :root{
-  --fontFamily: 'Hanken Grotesk Variable', sans-serif;
+  --font-family: 'Inter Variable', sans-serif;
+  --font-family-secondary:'EB Garamond Variable', serif;
   --textColor:#3C3C3C;
   --backgroundColor:#EAE8E1;
   --container-max-width:1440;
+  --card-height: 800px;
+  --card-margin: 0;
+  --card-top-offset: -1em;
+  --outline-width: 0px;
 }
 
-html {
-  font-size: 16px; 
-}
 
-@media (max-width: 1200px) {
-  html {
-    font-size: 14px; 
-  }
-}
-
-@media (max-width: 880px) {
-  html {
-    font-size: 12px; 
-  }
-}
-
-@media (max-width: 660px) {
-  html {
-    font-size: 10px; 
-  }
-}
 
 .btn {
   transition: all 0.3s ease;
   cursor: pointer;
-  width: fit-content;
+ 
 }
 
 </style>
