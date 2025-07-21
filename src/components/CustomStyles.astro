@@ -8,6 +8,9 @@ const { backgroundColor } = Astro.props;
 ---
 
 <style define:vars={{ backgroundColor, }}  is:global>
+html {
+  scroll-behavior: smooth;
+}
 :root{
   --font-family: 'Inter Variable', sans-serif;
   --font-family-secondary:'EB Garamond Variable', serif;

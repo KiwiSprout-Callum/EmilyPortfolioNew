@@ -2,23 +2,40 @@
 import Arrow45Deg from "./icons/Arrow45Deg.astro";
 const {
   text = "Click Me",
-  href = "#",
+  href = null,
   color = "#141414",
   bg= "#E4FF35",
   clickColor = "#CAE423",
-  isFullWidth = false
+  isFullWidth = false,
+  noIcon = false,
+  isHref = true,
+  id = "",
+  target=""
 } = Astro.props;
 
 const isFullWidthClass = isFullWidth ? "100%" : "fit-content";
 ---
+{isHref && href ? 
 <a 
+ id={id}
 href={href}
+target={target}
 class={`btn rounded-[32px]  btn-text  leading-none w-full flex gap-2.5 items-center ${Astro.props.class}`}
 >
 {text}
-<div class="icon"><Arrow45Deg /></div>
+{!noIcon && <div class="icon"><Arrow45Deg /></div>}
 </a>
-<style define:vars={{
+:
+<div
+  id={id}
+  class={`btn rounded-[32px]  btn-text  leading-none w-full flex gap-2.5 items-center ${Astro.props.class}`}
+>
+{text}
+{!noIcon && <div class="icon"><Arrow45Deg /></div>}
+</div>
+}
+
+<style is:global define:vars={{
   clickColor,
   color,
   bg,

@@ -2,30 +2,40 @@
 import { Image } from 'astro:assets';
 import EmilyImg from '../../assets/emily-img.png';
 ---
-<section class="page-layout-constrained grid grid-cols-2 gap-r-24 mb-r-48">
-  <!-- <div class="bg-[#E4E6BF] text-black-900 p-r-56 rounded-[24px] ">
-    <div class="max-w-r-502 flex flex-col gap-r-48">
-
-      <h2 class="title-xl ">
-        Emily Eaton
-      </h2>
-      <h3 class="title-s-regular">
-        Creative thinker, detail-driven designer, and advocate for user-first experiences.
-      </h3>
-      <p class="title-xs-regular text-black-500">
-        I collaborate with clients and teams worldwide to design intuitive digital products and meaningful user journeys built on empathy and insight.
-      </p>
-    </div>
-
-  </div>
+<section id="about" class="page-layout-constrained ">
+ <div class="px-6 md:px-12 lg:px-[100px] 2xl:px-[148px]">
+  
   <div>
-    <Image 
-      src={EmilyImg}
-      alt="Emily Eaton"
-      class="rounded-[24px] w-full h-full object-cover"
-      width={1344}
-      height={1708}
-    />
-  </div> -->
+    <div class=" grid lg:flex  lg:flex-row gap-8 md:gap-14 bg-[#FBEEF1] text-black-900 rounded-2xl py-8 px-6 md:py-[72px] items-center md:px-14">
+      <div class="aspect-[489/369]  lg:min-w-[450px]">
+        <Image 
+          src={EmilyImg}
+          alt="Emily Eaton"
+          class="rounded-2xl w-full h-full object-cover"
+          width={1467}
+          height={1107}
+        />
+      </div>
+      <div class="flex flex-col  body">
+  
+        <h2 class="title-s mb-8">
+          Your Strategic Design Partner
+        </h2>
+        <h3 class="subtitle-m text-black-700 mb-12">
+          Hi, I’m Emily Eaton.
+        </h3>
+        <p class="mb-4">
+          I design websites and brand identities that help businesses like yours show up with confidence and clarity. Good design shouldn’t be overwhelming, it should feel like a natural extension of your business.
+        </p>
+        <p>
+          I keep the process collaborative and grounded. Clear communication, dependable timelines, and work that reflects who you are and what you care about.
+        </p>
+      </div>
+  
+  
+  
+    </div>
+  </div>
 
+ </div>
 </section>

@@ -83,6 +83,9 @@
   line-height: 150%;
 
   vertical-align: middle;
+  @media (max-width: 767px) {
+    font-size: 18px;
+  }
 }
 @utility body-alt {
   font-family: var(--font-family);
@@ -111,6 +114,14 @@
   @media (max-width: 767px) {
     font-size: 16px;
   }
+}
+@utility subtext-small {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20.25px;
+  letter-spacing: 0%;
+  vertical-align: middle;
 }
 @utility tooltip-text {
   font-family: Hanken Grotesk;
@@ -192,8 +203,17 @@
 }
 @layer components {
   .btn {
-    padding: 18px 24px 22px 24px;
+    padding: 18px 24px;
   }
+}
+/* Hide scrollbars but allow scrolling */
+.scrollbar-hidden {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
 }
 @theme {
   --color-black: #1b1816;
@@ -416,15 +436,12 @@ body {
   --index: 2;
 }
 
-#card_3 {
-  --index: 3;
-}
-
 .card {
   position: sticky;
-  top: 100px;
+  top: -100px;
   padding-top: calc(var(--index) * var(--card-top-offset));
-  /* margin-top: -1.5em; */
+
+  /* margin-bottom: -5.5em; */
 }
 
 .card__content {

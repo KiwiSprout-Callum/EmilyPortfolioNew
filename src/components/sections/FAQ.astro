@@ -1,5 +1,89 @@
 ---
+import PlusCircle from "../icons/PlusCircle.astro"
+
+const FAQS = [
+  {
+    question:"Why should I work with you?",
+    answer:`<p>I design websites that are easy to use, fast to load, and simple to maintain. I’ll walk you through each step of the process, explain anything that’s unclear, and make sure your website does what it needs to do. I work efficiently, communicate clearly, and deliver on time.</p>`,
+  },
+  {
+    question:"How much does a website cost?",
+    answer:`<p>Prices start from $X (insert your baseline price here) for a small, well-structured site. Larger or more complex projects cost more depending on the number of pages, features, and how much content or branding support you need. I’ll always provide a clear quote up front.</p>`,
+  },
+  {
+    question:"Do I need to have branding or copy before we start?",
+    answer:`<p>Not necessarily. If you already have branding and copy, great — I’ll work with what you’ve got. If not, I can take care of both for you. Branding and copywriting are services I offer separately or alongside web design, depending on what you need. Whether it’s creating a simple visual identity or writing clear, effective website content, I’ll handle the process and deliver ready-to-use results.</p>`,
+  },
+  {
+    question:"Can you design things other than websites?",
+    answer:`<p>Yes — I also design brand identities, marketing materials, and other visuals that support your online presence. That includes things like logos, social media graphics, business cards, or presentation decks. If it’s connected to your brand and you need it to look consistent and well-designed, I can help.</p>`,
+  },
+  {
+    question:"What do you need from me to get started?",
+    answer:`<p>What do you need from me to get started?
+Once we’ve had an initial chat and agreed on a scope, I’ll need:</p>
+    <ul style="list-style:inside; margin-top:8px; margin-bottom:8px;">
+      <li>A rough outline of your goals or what the site needs to do</li>
+      <li>Any existing content (copy, images, branding, etc.)</li>
+      <li>Access to your domain/hosting, or we can set that up together</li>
+    </ul>
+    <p>If you don’t have everything ready, that’s okay — I can help you fill in the gaps.</p>`,
+  },
+]
 ---
-<section class="page-layout-constrained">
-  
+
+<section id="faq" class="page-layout-constrained">
+  <div class="grid md:grid-cols-2 py-12 px-6 md:px-12 lg:px-[100px] 2xl:px-[148px] gap-10 md:gap-24">
+    <div class="flex flex-col gap-8 md:gap-12">
+      <h2 class="title-m text-[48px]">Got questions?</h2>
+      <h3 class="subtitle-s">I've got answers.</h3>
+      <p class="body">
+        If what you’re wondering isn’t listed here, feel free to contact me and I’ll follow up fast, typically within one business day.
+      </p>
+    </div>
+    <div>
+      <ul class="flex flex-col gap-3 md:gap-6" id="faq-list">
+        {FAQS.map((item, i) => (
+          <li class=" rounded-xl bg-white px-6 py-5 body-small-alt">
+            <button
+              type="button"
+              class="w-full flex justify-between items-center text-left group"
+              aria-expanded="false"
+              data-index={i}
+            >
+              <span >{item.question}</span>
+              <div class="ml-4 transition-transform group-aria-expanded:rotate-45">
+                <PlusCircle />
+              </div>
+            
+            </button>
+            <div
+              class="faq-content max-h-0 overflow-hidden transition-all duration-500"
+              style="will-change: max-height;"
+            >
+              <div class=" mt-4" set:html={item.answer} />
+            </div>
+
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
 </section>
+<script is:inline>
+  const faqItems = document.querySelectorAll("#faq-list li");
+  faqItems.forEach((li) => {
+    li.addEventListener("click", (e) => {
+      const button = li.querySelector("button");
+      const content = li.querySelector(".faq-content");
+      const isExpanded = button.getAttribute("aria-expanded") === "true";
+      if (!isExpanded) {
+        button.setAttribute("aria-expanded", "true");
+        content.style.maxHeight = content.scrollHeight + "px";
+      } else {
+        button.setAttribute("aria-expanded", "false");
+        content.style.maxHeight = "0px";
+      }
+    });
+  });
+</script>

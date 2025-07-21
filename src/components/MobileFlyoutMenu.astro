@@ -1,10 +1,11 @@
 ---
 import Hamurger from "./icons/Hamurger.astro";
 import ELogoBlack from "./icons/ELogoBlack.astro";
+import MailBlack from "./icons/MailBlack.astro";
 const { navLinks } = Astro.props;
 ---
 
-<div class="isolate z-50">
+<div class="isolate z-50 md:hidden flex">
   <div class="mx-auto">
     <button type="button" class="toggle-flyout inline-flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900" aria-expanded="false">
       <Hamurger />
@@ -30,6 +31,9 @@ const { navLinks } = Astro.props;
         {navLinks?.map(({ label, href }) => (
           <li class="button-s"><a href={href}>{label}</a></li>
         ))}
+        <li>
+          <a href="#contact" ><MailBlack class="h-6 w-6" /></a>
+        </li>
       </ul>
     </div>
   </div>

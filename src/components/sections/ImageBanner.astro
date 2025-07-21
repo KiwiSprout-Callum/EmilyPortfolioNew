@@ -12,13 +12,14 @@ import WarmDesk from '../../assets/warm-desk.png';
     width={1365}
     height={560}
     />
+      <!-- mobile -->
      <!-- Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10"></div>
-    <!-- mobile -->
-    <div class="grid grid-cols-[80px_1fr] items-center justify-between gap-4 md:hidden absolute bottom-6 left-6 z-20">
-      
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/90 z-10 md:hidden block"></div>
 
-        <div class="rounded-[50%] overflow-hidden w-20 h-20">
+    <div class="md:max-w-[420px] md:p-8  grid grid-cols-[80px_1fr] items-center justify-between gap-4  absolute bottom-6 left-6 z-20">
+      
+      <div class="absolute inset-0 md:rounded-2xl bg-black/60 z-10  md:block hidden backdrop-blur-xs"></div>
+        <div class="rounded-[50%] overflow-hidden w-20 h-20  z-30">
           <Image
             src={EmilyImg}
             alt="Emily Eaton"
@@ -27,7 +28,7 @@ import WarmDesk from '../../assets/warm-desk.png';
             height={80}
           />
         </div>
-        <div class="text-white ">
+        <div class="text-white z-30">
           <h2 class="body-small-alt font-semibold mb-2">Emily Eaton</h2>
           <h3 class="body-small-alt ">An independent designer based in Aotearoa New Zealand📍</h3>
         </div>

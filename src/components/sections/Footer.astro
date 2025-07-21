@@ -21,11 +21,12 @@ const socials = [{
   href: "https://www.behance.net/emily_eaton"
 }]
 ---
-<footer  class="bg-black page-layout-constrained body-small-light">
-  <!-- mobile -->
+<footer  class="bg-black  body-small-light">
+  <div class="page-layout-constrained">
+      <!-- mobile -->
  <div class="py-6 pl-r-24 pr-r-24 flex flex-col gap-6 justify-between md:hidden">
 
-  <div class="flex items-center justify-between">
+  <div class="flex items-center gap-2 justify-between subtext-small">
     <div class="flex gap-r-32 items-center">
       <a href="#">
         <ELogoLight />
@@ -33,10 +34,10 @@ const socials = [{
       <span>Emily Eaton <br class="block md:hidden"> Copyright © 2025</span>
     </div>
   
-    <div class="flex gap-r-48 items-center">
+    <div class="flex gap-r-48 items-center text-[12px] md:subtext-small">
       <a
         href="mailto:e.eaton@outlook.com"
-        class="flex items-center gap-r-5"
+        class="flex items-center gap-2 md:gap-r-5"
       >
         <EmailOutline />
         e.eaton@outlook.com
@@ -89,6 +90,7 @@ const socials = [{
 
   </div>
  </div>
+  </div>
 </footer>
 <style>
   footer, footer svg{
