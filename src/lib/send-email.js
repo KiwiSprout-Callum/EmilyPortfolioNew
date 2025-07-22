@@ -6,6 +6,7 @@ sgMail.setApiKey(sendGridApiKey);
 
 export function sendEmail(emailInput) {
   const emailFrom = emailInput.from;
+  const subject = emailInput.subject;
   const emailName = emailInput.name;
   const emailSubject = "New portfolio site message from " + emailName;
   const testUse = "e.eaton@outlook.com";
@@ -18,7 +19,7 @@ export function sendEmail(emailInput) {
       name: "Freelance Contact Form",
     },
     subject: emailSubject,
-    text: emailFrom + " wants to reach out: " + emailInput.message,
+    text: subject + emailInput.message,
     // html: emailInput?.html,
   };
   sgMail

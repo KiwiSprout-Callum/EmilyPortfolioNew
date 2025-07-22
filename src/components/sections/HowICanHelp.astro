@@ -143,24 +143,35 @@ const howICanHelp = [
     <div class="hidden md:grid grid-cols-4 gap-2  md:gap-4 2xl:gap-6 max-w-fit mx-auto items-start mb-[50px]">
       {howICanHelp.map((item) => (
         <div
-          class="flex flex-col px-3 py-12 rounded-xl text-center h-full justify-between"
+          class="flex flex-col px-3 py-12 rounded-xl text-center h-full gap-5 md:gap-10"
           style={`background-color: ${item.bgColor}; color: ${item.color};`}
         >
-          <div>
+          <div class="md:min-h-[240px] lg:min-h-[200px] 2xl:min-h-[180px] min-h-fit">
             <p class="mb-6 subtitle-s">{item.title}</p>
-            <p class="body-alt mb-6">{item.description}</p>
+            <p class="body-alt ">{item.description}</p>
           </div>
-          <ul class="grid grid-cols-1  gap-4">
-            {item.list.map((listItem) => (
-              <li class="flex flex-col justify-between text-start items-start p-3 lg:p-4 2xl:p-8 bg-white rounded-xl min-h-[224px]">
-                {listItem.icon? <div set:html={listItem.icon} />: null}
-                <div class="flex flex-col gap-2">
-                  <h3 class="title-xs">{listItem.title}</h3>
-                  <p class="body-small-alt">{listItem.description}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <ul class="grid grid-cols-1 gap-4">
+  {item.list.map((listItem) => (
+    <li class="flex flex-col justify-between text-start items-start p-3 lg:p-4 2xl:p-8 bg-white rounded-xl md:min-h-[284px] xl:min-h-[224px]">
+      
+      {/* Content block that only grows as needed */}
+      <div class="flex flex-col items-start gap-12">
+        {listItem.icon ? (
+          <div set:html={listItem.icon} />
+        ) : null}
+
+        <div class="flex flex-col gap-2">
+          <h3 class="title-xs">{listItem.title}</h3>
+          <p class="body-small-alt">{listItem.description}</p>
+        </div>
+      </div>
+
+      {/* Spacer element that absorbs leftover vertical space */}
+      <div class="flex-grow" />
+
+    </li>
+  ))}
+</ul>
         </div>
       ))}
     </div>
