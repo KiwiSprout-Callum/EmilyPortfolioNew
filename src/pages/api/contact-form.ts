@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { sendEmail } from "@/lib/send-email";
+import { sendEmail } from "../../lib/send-email";
 export const prerender = false;
 export const POST: APIRoute = async ({ request }) => {
   const body = await request.json();
