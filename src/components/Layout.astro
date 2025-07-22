@@ -3,11 +3,21 @@ import Header from './sections/Header.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from './sections/Footer.astro';
 import CustomStyles from '../components/CustomStyles.astro';
-const { title, backgroundColor= "#EAE8E1"} = Astro.props;
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+
+
+const { title,
+
+   backgroundColor= "#EAE8E1"} = Astro.props;
 
 ---
+<!DOCTYPE html>
 <html lang="en">
-<BaseHead title={title} />
+<BaseHead 
+  title={title ? `${title} | ${SITE_TITLE}` : SITE_TITLE}
+  description={SITE_DESCRIPTION}
+ 
+  />
 <CustomStyles backgroundColor={backgroundColor} />
 <body>
   <Header />

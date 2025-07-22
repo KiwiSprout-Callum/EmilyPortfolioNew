@@ -9,7 +9,7 @@ export default function ContactSection() {
       className="page-layout-constrained flex flex-col gap-6"
       id="contact"
     >
-      <div className="bg-[#F8DD9A] rounded-2xl px-3 py-6 md:px-12 md:py-14 transition-all duration-500">
+      <div className="bg-[#F8DD9A] rounded-2xl px-3 py-6 md:px-12 md:py-14 transition-all duration-500 overflow-hidden">
         <div className="md:px-0 px-6">
           <h2 className="subtitle-m mb-6 text-[#503C08]">
             Alright, enough about me. What’s your big idea?
@@ -71,13 +71,13 @@ export default function ContactSection() {
 
           {/* Contact Form Disclosure Panel */}
           <div
-            className={`transition-all duration-1000 overflow-hidden ${
+            className={`transition-all duration-1000 ${
               showForm
                 ? "max-h-[1200px] opacity-100 scale-100"
                 : "max-h-0 opacity-0 scale-95"
             }`}
           >
-            <ContactForm />
+            <ContactForm setShowForm={setShowForm} showForm={showForm} />
           </div>
         </div>
       </div>
