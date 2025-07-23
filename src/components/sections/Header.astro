@@ -1,55 +1,104 @@
 ---
-import  ELogoBlack  from "../icons/ELogoBlack.astro"
+import ELogoBlack from "../icons/ELogoBlack.astro"
 import MailBlack from '../icons/MailBlack.astro';
-import Hamurger from "../icons/Hamurger.astro";
 import MobileFlyoutMenu from "../MobileFlyoutMenu.astro";
 const navLinks = [
   {
-  label: 'Work',
-  href: '/#work'
-}, 
-{
-  label: 'Services',
-  href: '/#services'
-}, 
-{
-  label: 'About',
-  href: '/#about'
-}, 
-{
-  label: 'FAQ',
-  href: '/#faq'
-}]
+    label: 'Work',
+    href: '/#work'
+  }, 
+  {
+    label: 'Services',
+    href: '/#services'
+  }, 
+  {
+    label: 'About',
+    href: '/#about'
+  }, 
+  {
+    label: 'FAQ',
+    href: '/#faq'
+  }
+]
 ---
-<header>
-  
-<nav class="px-8 py-[28px] md:page-layout-constrained">
-  <div class="flex justify-between items-center">
-    <a href="/"><ELogoBlack class="h-6 w-6" /></a>
-    <ul class=" gap-4 h-8 items-center hidden md:flex">
-      {navLinks?.map(({
-        label,
-        href
-      })=>{
-        return  <li class="button-s"><a href={href}>{label}</a></li>
-      })}
-      
-    </ul>
-    <a href="#contact" class=" hidden md:flex"><MailBlack class="h-6 w-6" /></a>
-    <!-- <button class="flex md:hidden">
-      <Hamurger class="h-6 w-6" />
-    </button> -->
-    <MobileFlyoutMenu navLinks={navLinks} />
-  
-  </div>
-</nav>
+<header id="main-header" class="w-full transition-all duration-750 ease-[cubic-bezier(0.4,0,0.2,1)]">
+  <nav class="px-8  !mt-0 md:page-layout-constrained transition-all duration-500 mx-auto w-full ">
+    <div class="flex justify-between items-center">
+      <a href="/"><ELogoBlack class="h-6 w-6" /></a>
+      <ul class="gap-4 h-8 items-center hidden md:flex">
+        {navLinks?.map(({ label, href }) => {
+          return <li class="button-s"><a href={href}>{label}</a></li>
+        })}
+      </ul>
+      <a href="#contact" class="hidden md:flex"><MailBlack class="h-6 w-6" /></a>
+      <MobileFlyoutMenu navLinks={navLinks} />
+    </div>
+  </nav>
 </header>
-<style>
-  
 
-  a:hover{
+<style>
+  a:hover {
     opacity: 0.8;
     cursor: pointer;
   }
 
+  #main-header {
+    transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    margin: 0 auto;
+    height: 88px;
+    display: flex;
+    align-items: center;
+  }
+
+  #main-header.scrolled {
+    top: 20px;
+    background: white;
+    border-radius: 100px;
+   // width: 94.8vw;
+    width: 90vw;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    height: 64px; 
+    @media screen and (min-width: 640px) {
+      width: 80vw;
+      
+    }
+    /* padding: 0 24px;
+ 
+    @media screen and(min-width: 1024px) {
+      padding: 0 100px;
+    }
+    @media screen and (min-width: 1536px) {
+      padding: 0 148px;
+    } */
+  }
+
+
 </style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.getElementById('main-header');
+
+    const activateThreshold = 30; // Scroll position to ADD .scrolled
+    const deactivateThreshold = 10; // Scroll position to REMOVE .scrolled
+
+    const updateHeader = () => {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll > activateThreshold && !header.classList.contains('scrolled')) {
+        header.classList.add('scrolled');
+      } else if (currentScroll < deactivateThreshold && header.classList.contains('scrolled')) {
+        header.classList.remove('scrolled');
+      }
+    };
+
+    // Initial check
+    updateHeader();
+
+    // Scroll listener
+    window.addEventListener('scroll', updateHeader);
+  });
+</script>

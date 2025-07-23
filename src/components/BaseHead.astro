@@ -2,9 +2,7 @@
   import '../styles/global.css';
   const { title, description,  image = "/warm-desk.png" } = Astro.props;
 
-  console.log("Astro?.url?.pathname, Astro?.site",Astro?.url?.pathname, Astro?.site)
   function removeTrailingSlash(str: string) {
-    console.log('Removing trailing slash from:', str);
   return str.replace(/\/+$/, '');
 }
 

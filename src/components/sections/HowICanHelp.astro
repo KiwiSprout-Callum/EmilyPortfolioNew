@@ -136,11 +136,11 @@ const howICanHelp = [
 ]
 ---
 <section id="services" class="page-layout-constrained my-12 overflow-x-hidden ">
-  <div class="px-6 md:px-12 lg:px-[100px] 2xl:px-[148px]">
+  <div   class="w-[90vw] sm:w-[80vw] mx-auto">
     <h2 class="title-m mb-10 md:mb-[92px] text-center">Here's how I can help:</h2>
 
     <!-- Desktop Grid (hidden on mobile) -->
-    <div class="hidden md:grid grid-cols-4 gap-2  md:gap-4 2xl:gap-6 max-w-fit mx-auto items-start mb-[50px]">
+    <div class="hidden lg:grid grid-cols-4 gap-2  md:gap-4 2xl:gap-6 max-w-fit mx-auto items-start mb-[50px]">
       {howICanHelp.map((item) => (
         <div
           class="flex flex-col px-3 py-12 rounded-xl text-center h-full gap-5 md:gap-10"
@@ -177,22 +177,25 @@ const howICanHelp = [
     </div>
   
     <!-- Mobile Carousel -->
+
+
     <div
     id="carousel-wrapper"
-    class="md:hidden overflow-x-auto scrollbar-hidden snap-x snap-mandatory flex scroll-smooth gap-4 px-4 mb-6"
+    class="lg:hidden overflow-x-auto scrollbar-hidden snap-x snap-mandatory flex scroll-smooth gap-4 mb-6"
+    style="-webkit-overflow-scrolling: touch; overscroll-behavior-x: contain;"
   >
-      {howICanHelp.map((item) => (
-       <div
-      class="snap-center shrink-0 w-full px-3 py-12 mr-4 last:mr-0 rounded-xl text-center h-full flex flex-col justify-between"
-      style={`background-color: ${item.bgColor}; color: ${item.color};`}
-    >
-          <div>
+    {howICanHelp.map((item) => (
+      <div
+        class="snap-center shrink-0 w-[calc(100%-15%)] md:w-[calc(100%-25%)] px-3 py-12 rounded-xl text-center h-full flex flex-col justify-between"
+        style={`background-color: ${item.bgColor}; color: ${item.color};`}
+      >
+        <div class="min-h-[180px]">
             <p class="mb-6 subtitle-s">{item.title}</p>
             <p class="body-alt mb-6">{item.description}</p>
           </div>
           <ul class="grid grid-cols-1 gap-4">
             {item.list.map((listItem) => (
-              <li class="flex md:flex-col gap-3 md:justify-between text-start items-start p-6 bg-white rounded-xl md:min-h-[294px]">
+              <li class="flex md:flex-col gap-3 md:justify-between text-start items-start p-6 bg-white rounded-xl min-h-[230px] sm:min-h-[220px]"> 
                 {listItem.icon? <div set:html={listItem.icon} />: null}
                 <div class="flex flex-col gap-2">
                   <h3 class="title-xs">{listItem.title}</h3>
@@ -201,12 +204,12 @@ const howICanHelp = [
               </li>
             ))}
           </ul>
-        </div>
-      ))}
-    </div>
+      </div>
+    ))}
+  </div>
   
     <!-- Dot Indicators -->
-    <div id="carousel-dots" class="md:hidden flex justify-center gap-2 mb-8"></div>
+    <div id="carousel-dots" class="lg:hidden flex justify-center gap-2 mb-8"></div>
   
     <div class="flex flex-col gap-14 md:flex-row justify-between rounded-xl bg-white items-center p-8 md:p-12">
       <p class="subtitle-s md:text-[24px] text-[32px]">Now’s the part where you tell me what you’re scheming.</p>
@@ -216,19 +219,30 @@ const howICanHelp = [
  
 </section>
 <script is:inline>
+
+
   const carousel = document.getElementById("carousel-wrapper");
   const dotsContainer = document.getElementById("carousel-dots");
 
   const slides = Array.from(carousel.children);
   const slideCount = slides.length;
 
-  // Create dots
-  slides.forEach((_, i) => {
+  // Create dots with improved ARIA attributes
+  slides.forEach((slide, i) => {
     const dot = document.createElement("button");
-    dot.className =
-      "w-2 h-2 rounded-full bg-gray-300 transition-colors aria-selected:bg-black";
-    dot.setAttribute("aria-label", `Slide ${i + 1}`);
-    if (i === 0) dot.setAttribute("aria-selected", "true");
+    dot.className = "w-2 h-2 rounded-full bg-gray-300 transition-colors aria-selected:bg-black";
+    
+    // Enhanced ARIA attributes
+    dot.setAttribute("role", "tab");
+    dot.setAttribute("aria-label", `Go to slide ${i + 1} of ${slideCount}`);
+    dot.setAttribute("aria-controls", `slide-${i + 1}`);
+    dot.setAttribute("tabindex", i === 0 ? "0" : "-1");
+    
+    if (i === 0) {
+      dot.setAttribute("aria-selected", "true");
+      dot.setAttribute("tabindex", "0");
+    }
+    
     dotsContainer.appendChild(dot);
   });
 
@@ -236,28 +250,66 @@ const howICanHelp = [
 
   // Track scroll & update active dot
   carousel.addEventListener("scroll", () => {
-    const index = Math.round(carousel.scrollLeft / carousel.offsetWidth);
-
+    const viewportWidth = window.innerWidth;
+    const slideWidth = viewportWidth* 0.8
+  
+    const index = Math.round((carousel.scrollLeft * 1.25 / slideWidth ));
+    
     dots.forEach((dot, i) => {
-      if (i === index) {
-        dot.setAttribute("aria-selected", "true");
-      } else {
-        dot.removeAttribute("aria-selected");
+      const isSelected = i === index;
+      dot.setAttribute("aria-selected", isSelected);
+      dot.setAttribute("tabindex", isSelected ? "0" : "-1");
+      
+      // Update corresponding slide's visibility for screen readers
+      slides[i].setAttribute("aria-hidden", !isSelected);
+    });
+  });
+
+  // Calculate the actual width of a slide including gap
+  const getSlideWidth = () => {
+    if (slides.length === 0) return 0;
+    const slide = slides[0];
+    const style = window.getComputedStyle(slide);
+    const margin = parseFloat(style.marginRight);
+    return slide.offsetWidth + margin;
+  };
+
+  // Dot click → scroll to slide
+  dots.forEach((dot, i) => {
+    
+    dot.addEventListener("click", () => {
+      //get viewport width 
+      const viewportWidth = window.innerWidth;
+      const slideWidth = viewportWidth* 0.8
+    //  const slideWidth = getSlideWidth();
+    
+      carousel.scrollTo({
+        left: i * slideWidth ,
+        behavior: "smooth",
+      });
+      
+      // Focus management for better keyboard navigation
+      setTimeout(() => {
+        dots.forEach(d => d.setAttribute("tabindex", "-1"));
+        dot.setAttribute("tabindex", "0");
+        dot.focus();
+      }, 100);
+    });
+    
+    // Add keyboard support
+    dot.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        dot.click();
       }
     });
   });
 
-  // Dot click → scroll to slide
-  dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => {
-      const slideWidth = carousel.offsetWidth;
-      carousel.scrollTo({
-        left: i * slideWidth,
-        behavior: "smooth",
-      });
-    });
+  // Initialize slides with proper ARIA attributes
+  slides.forEach((slide, i) => {
+    slide.id = `slide-${i + 1}`;
+    slide.setAttribute("role", "tabpanel");
+    slide.setAttribute("aria-labelledby", `dot-${i + 1}`);
+    slide.setAttribute("aria-hidden", i !== 0);
   });
-
-  // Optional: fix iOS scroll bounce / gesture oddities
-  carousel.style.touchAction = "pan-x";
 </script>
